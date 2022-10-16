@@ -4,7 +4,7 @@
  */
 package ca1;
 
-import java.io.BufferedReader;
+//import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,13 +30,13 @@ public class CA1 {
             String studentNumber = myReader.next();
             
             String[] names = studentName.split(" "); // split the names
-            String firstName = names[0]; // first name
+            //String firstName = names[0]; // first name
             String secoundName = names[1]; // secound name
             
             String workload = null;
             
             if(numberOfClasses < 1 || numberOfClasses > 8){
-                System.out.println("Number of classes is Innvalid :(");
+                System.out.println("Number of classes is Invalid :(");
             }
             
             if(numberOfClasses == 1){
@@ -53,18 +53,24 @@ public class CA1 {
             }
             
             
-            
+             
             
             if(studentNumber.length() < 6){
                 System.out.println("Student number is Invalid! :(");
             }
+            
                 
+            System.out.println(" ");
+            System.out.println(studentNumber.substring(0, 2));
+
             //input
             System.out.println("INPUT:");
             System.out.println(studentName);
             System.out.println(numberOfClasses);
             System.out.println(studentNumber);
             
+            System.out.println(" ");
+            System.out.println(" ");
             
             //output
             System.out.println("OUTPUT:");
