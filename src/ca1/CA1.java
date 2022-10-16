@@ -84,16 +84,6 @@ public class CA1 {
         }
         
         
-        /*try{
-            File file = new File("Student.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-            while((st=br.readLine()) != null){
-                System.out.println(st);
-            }
-        }catch (Exception e){
-            System.out.println("File access error!");
-        }*/
     }
     
 }
