@@ -4,7 +4,7 @@
  */
 package ca1;
 
-//import java.io.BufferedReader;
+// IMPORTS
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,6 +13,8 @@ import java.util.Scanner;
 /**
  *
  * @author Lucas Fortunato
+ * Github: https://github.com/lucasfpac
+ * Portfolio: https://lucasfortunato.com.br/
  */
 public class CA1 {
 
@@ -21,60 +23,70 @@ public class CA1 {
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-        // Using a variable to hold the file path.
+        // Variable for the file path.
         File file = new File("student.txt"); 
 
+        // Create the file that the infos will be written.
         BufferedWriter output = new BufferedWriter(new FileWriter("status.txt"));
+
+        // Variable holding the TRUE value, if the following test fail, it will be replaced by FALSE and shows an error!
+        boolean check = true;
     
         // Using try and catch in case of has some issue to open the file.
         try{
 
-            // Boolean var to hold TRUE if pass all te checks bellow.
-            boolean check = true;
-
-            // Read the file
+            // Read the file.
             Scanner studentInfo = new Scanner(new FileReader(file)); 
-            
-            // Variable to know how many students has in the list
-            Integer student = 0;
 
+            // Statement to check if the file is Empty.
             if(!studentInfo.hasNext()){
                 System.out.println("Student file is Empty!");
                 check = false;  
             }else{
                 
-
+                // While loop to stop when it reach the end of the file.
                 while (studentInfo.hasNextLine()) {
-                
-                    // Using variables to store each line of the file.
+
+                    // Variables to store each line of the file.
                     String studentName = studentInfo.nextLine(); 
                     String Classes = studentInfo.nextLine(); 
                     String studentNumber = studentInfo.nextLine(); 
 
-                    // Add student to the count;
-                    ++student;
+                    // Variable to hold the number of students in the file.
+                    Integer numberOfStudents = 0;
 
+                    // Add 1 to the student number varible when it fills all the 3 varibles above.
+                    ++numberOfStudents;
+                    
+                    /*------------------------------------ */
+                    /* ----- CHECKS FOR STUDENT NAME ----- */
+                    /*------------------------------------ */
 
-                    int numberOfClasses = Integer.parseInt(Classes);
-                    // System.out.println("Student name: " + studentName);
-                    // System.out.println("Number of classes: " +numberOfClasses);
-                    // System.out.println("Student number: " +studentNumber);
-                
-
-                    if (studentName.matches("\"([\\w\\s]+)\"")) { 
+                    // Check if the student name has letters, number and single space.
+                    if (!studentName.matches("[a-zA-Z0-9\\s]*")) { 
                         System.out.println("Something wrong with name/surname: " + studentName);
                         check = false; 
                     }
 
-                    // PRECISA CHECKAR SE AS VARIAVEIS ESTAO VAZIAS
-                    // CHECAR O ANO DO ESTUDANTE TEM Q SER NO MINIMO 2020
-
                     // Split the the full name in two parts.
                     String[] names = studentName.split(" "); 
                     
-                    // Take the second name.
+                    // Take the second name from the Full name.
                     String secondName = names[1]; 
+
+                    // Check if the secound name has letters and numbers.
+                    if (!secondName.matches("[a-zA-Z0-9]+")) { 
+                        System.out.println("The secound name is Invalid: " + secondName);
+                        check = false; 
+                    }
+
+                    /*------------------------------------------- */
+                    /* ----- CHECKS FOR NUMBER OF CLASSES ------- */
+                    /*------------------------------------------- */
                     
+                    // convert the variable to INTEGER
+                    int numberOfClasses = Integer.parseInt(Classes);
+
                     // Assingn a null value for the workload, so we can populated it in the next check.
                     String workload = null;
 
@@ -94,8 +106,12 @@ public class CA1 {
                     }
                     if(numberOfClasses > 6){
                         workload = "Full Time";
+
                     }
-                
+                    /*---------------------------------------- */
+                    /* ----- CHECKS FOR STUDENT NUMBER ------- */
+                    /*---------------------------------------- */
+
                     // Check if the student number has a minimun of 6 characters.
                     if(studentNumber.length() < 6){
                         System.out.println("Student number is Invalid!:" + studentNumber);
@@ -143,26 +159,30 @@ public class CA1 {
                         System.out.println("The last numbers has to be 1 and 200: " + lastNumbers);    
                         check = false;
                     }
+                    /*--------------------------- */
+                    /* ----- FILE WRITING ------- */
+                    /*--------------------------- */
                     
-
-                    // If all the requeriments are ok, it will write the info as required, and save on the "status.txt" file.
-                    
+                    // If all the the ckecks passes, it will write the infos as required, and save on the "status.txt" file.
                     if (check == true){
-                        
                         output.write(studentNumber + " - "+ secondName );
                         output.newLine();
                         output.write(workload);
                         output.newLine();
                         output.flush();
-                        System.out.println("Student number " + student + " Saved"); // print that the file has been closed   
-                    }else{
-                        System.out.println("Something wrong with the informations provided on student number " + student);
+                        System.out.println("Student number " + numberOfStudents + " Saved");
+
+                    // If something wrong it will shows witch student has an error
+                    }else{   
+                        System.out.println("Something wrong with the informations provided on student number " + numberOfStudents);
+                        break;
                     }
                 }
             }
-            output.close(); // close the file
+            // CLose the file.
+            output.close();
             
-            
+        // If the has something wrong with the reading file patch.  
         }catch(FileNotFoundException e){
             System.out.println("ERROR! File not found");
         }   
