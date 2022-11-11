@@ -112,6 +112,9 @@ Lucas Cardoso
 John Smith
 6
 23BSC200
+Sam Weiss
+0
+22BSC1
 ````
 
 ### Status.txt
@@ -139,6 +142,13 @@ John Smith
 ------------------------------
 **** End of the document ****
 ------------------------------
+`````
   
-  
+### Console
+`````
+Student number 1: Saved
+Student number 2: Saved
+Student number 3: Saved
+Student number 4: Saved
+Student number 5: Number of classes is Invalid!, it has to be between 1 and 8 : 0
       
