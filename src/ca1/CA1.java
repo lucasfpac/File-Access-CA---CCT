@@ -13,9 +13,9 @@ import java.util.Scanner;
 /**
  *
  * @author Lucas Fortunato
- * @Student_Number SBA21177
- * @Github_Link https://github.com/lucasfpac/File-Access-CA---CCT
- * @Portfolio https://lucasfortunato.com.br/
+ * Student_Number SBA21177
+ * Github_Link https://github.com/lucasfpac/File-Access-CA---CCT
+ * Portfolio https://lucasfortunato.com.br/
  * 
  */
 public class CA1 {
