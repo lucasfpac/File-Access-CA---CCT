@@ -28,9 +28,20 @@ public class CA1 {
 
         // Create the file that the infos will be written.
         BufferedWriter output = new BufferedWriter(new FileWriter("status.txt"));
+        output.write("------------------------------");
+        output.newLine();
+        output.write("****  CA1 Student Status  ****");
+        output.newLine();
+        output.write("**  Author: Lucas Fortunato **");
+        output.newLine();
+        output.write("** Student Number: SBA21177 **");
+        output.newLine();
 
         // Variable holding the TRUE value, if the following test fail, it will be replaced by FALSE and shows an error!
         boolean check = true;
+
+        // Variable to hold the number of students in the file.
+        Integer numberOfStudents = 0;
     
         // Using try and catch in case of has some issue to open the file.
         try{
@@ -52,9 +63,6 @@ public class CA1 {
                     String Classes = studentInfo.nextLine(); 
                     String studentNumber = studentInfo.nextLine(); 
 
-                    // Variable to hold the number of students in the file.
-                    Integer numberOfStudents = 0;
-
                     // Add 1 to the student number varible when it fills all the 3 varibles above.
                     ++numberOfStudents;
                     
@@ -72,11 +80,20 @@ public class CA1 {
                     String[] names = studentName.split(" "); 
                     
                     // Take the second name from the Full name.
+                    String firstName = names[0]; 
+                    
+                    // Check if the first name has just letters.
+                    if (!firstName.matches("[a-zA-Z]+")) { 
+                        System.out.println("The first name is Invalid: " + firstName);
+                        check = false; 
+                    }
+
+                    // Take the second name from the Full name.
                     String secondName = names[1]; 
 
-                    // Check if the secound name has letters and numbers.
+                    // Check if the second name has letters and numbers.
                     if (!secondName.matches("[a-zA-Z0-9]+")) { 
-                        System.out.println("The secound name is Invalid: " + secondName);
+                        System.out.println("The second name is Invalid: " + secondName);
                         check = false; 
                     }
 
@@ -165,10 +182,15 @@ public class CA1 {
                     
                     // If all the the ckecks passes, it will write the infos as required, and save on the "status.txt" file.
                     if (check == true){
-                        output.write(studentNumber + " - "+ secondName );
+                        output.write("------------------------------");
                         output.newLine();
-                        output.write(workload);
+                        output.write("* Student: " + numberOfStudents);
                         output.newLine();
+                        output.write("* "+ studentNumber + " - "+ secondName );
+                        output.newLine();
+                        output.write("* "+ workload);
+                        output.newLine();
+                        
                         output.flush();
                         System.out.println("Student number " + numberOfStudents + " Saved");
 
@@ -178,7 +200,13 @@ public class CA1 {
                         break;
                     }
                 }
+                
             }
+            output.write("------------------------------");
+            output.newLine();
+            output.write("**** End of the document ****");
+            output.newLine();
+            output.write("------------------------------");
             // CLose the file.
             output.close();
             
