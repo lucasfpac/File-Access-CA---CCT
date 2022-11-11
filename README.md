@@ -31,7 +31,7 @@ Tasks:
 :heavy_check_mark: 3) If the data is valid, then you have to output the data to a file named status.txt, in the following format:
 ```
    <Student number> - <Second Name>
-    <Workload>
+   <Workload>
 ```
   **DISTINCTION WORK**
   
@@ -95,4 +95,50 @@ Would output as:
 20MSC1914 – Rodgers
 Full Time
 ```
+  
+# Result 
+  
+### Student.txt
+````
+Lexi Derulo
+1
+21BSC002
+Lucas Fortunato
+2
+23BSC060
+Lucas Cardoso
+4
+20BSC120
+John Smith
+6
+23BSC200
+````
+
+### Status.txt
+````
+------------------------------
+****  CA1 Student Status  ****
+**  Author: Lucas Fortunato **
+** Student Number: SBA21177 **
+------------------------------
+* Student: 1
+* 21BSC002 - Derulo
+* Very Light
+------------------------------
+* Student: 2
+* 23BSC060 - Fortunato
+* Light
+------------------------------
+* Student: 3
+* 20BSC120 - Cardoso
+* Part Time
+------------------------------
+* Student: 4
+* 23BSC200 - Smith
+* null
+------------------------------
+**** End of the document ****
+------------------------------
+  
+  
       
