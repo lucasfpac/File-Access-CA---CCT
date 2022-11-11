@@ -13,8 +13,9 @@ import java.util.Scanner;
 /**
  *
  * @author Lucas Fortunato
- * Github: https://github.com/lucasfpac
- * Portfolio: https://lucasfortunato.com.br/
+ * @Github_Link: https://github.com/lucasfpac/File-Access-CA---CCT
+ * @Portfolio: https://lucasfortunato.com.br/
+ * 
  */
 public class CA1 {
 
@@ -72,8 +73,9 @@ public class CA1 {
 
                     // Check if the student name has letters, number and single space.
                     if (!studentName.matches("[a-zA-Z0-9\\s]*")) { 
-                        System.out.println("Something wrong with name/surname: " + studentName);
-                        check = false; 
+                        System.out.println("Student number " + numberOfStudents + ": Something wrong with name/surname: " + studentName);
+                        check = false;
+                        break; 
                     }
 
                     // Split the the full name in two parts.
@@ -83,18 +85,20 @@ public class CA1 {
                     String firstName = names[0]; 
                     
                     // Check if the first name has just letters.
-                    if (!firstName.matches("[a-zA-Z]+")) { 
-                        System.out.println("The first name is Invalid: " + firstName);
-                        check = false; 
+                    if (!firstName.matches("[a-zA-Z']+")) { 
+                        System.out.println("Student number " + numberOfStudents + ": The first name is Invalid: " + firstName);
+                        check = false;
+                        break;
                     }
 
                     // Take the second name from the Full name.
                     String secondName = names[1]; 
 
                     // Check if the second name has letters and numbers.
-                    if (!secondName.matches("[a-zA-Z0-9]+")) { 
-                        System.out.println("The second name is Invalid: " + secondName);
-                        check = false; 
+                    if (!secondName.matches("[a-zA-Z0-9']+")) { 
+                        System.out.println("Student number " + numberOfStudents + ": The second name is Invalid: " + secondName);
+                        check = false;
+                        break; 
                     }
 
                     /*------------------------------------------- */
@@ -109,8 +113,9 @@ public class CA1 {
 
                     // Check to determined what workload the student are assigned. 
                     if(numberOfClasses < 1 || numberOfClasses > 8){
-                        System.out.println("Number of classes is Invalid!:" + numberOfClasses);
+                        System.out.println("Student number " + numberOfStudents + ": Number of classes is Invalid!, it has to be between 1 and 8 : " + numberOfClasses);
                         check = false;
+                        break;
                     }
                     if(numberOfClasses == 1){
                         workload = "Very Light";
@@ -121,7 +126,7 @@ public class CA1 {
                     if(numberOfClasses >= 3 && numberOfClasses <= 5 ){
                         workload = "Part Time";
                     }
-                    if(numberOfClasses > 6){
+                    if(numberOfClasses >= 6){
                         workload = "Full Time";
 
                     }
@@ -131,50 +136,57 @@ public class CA1 {
 
                     // Check if the student number has a minimun of 6 characters.
                     if(studentNumber.length() < 6){
-                        System.out.println("Student number is Invalid!:" + studentNumber);
+                        System.out.println("Student number " + numberOfStudents + ": Student number is Invalid!, it has to be at least 6 digits: " + studentNumber);
                         check = false;
+                        break;
                     }
 
                     // Check if first 2 characters of student number are numbers.
                     String studentNumberFirstTwo = studentNumber.substring(0, 2);
                     if (!studentNumberFirstTwo.matches("[0-9]+")) { 
-                        System.out.println("The first 2 characters of student number has to be numbers: " + studentNumberFirstTwo);    
+                        System.out.println("Student number " + numberOfStudents + ": The first 2 characters of student number has to be numbers: " + studentNumberFirstTwo);    
                         check = false;
+                        break;
                     }
 
                     // Check if the student number year is at least 2020.
                     int studentYear = Integer.parseInt(studentNumberFirstTwo);
                     if (studentYear < 20) { 
-                        System.out.println("The student year has to be at 2020: 20" + studentYear);    
+                        System.out.println("Student number " + numberOfStudents + ": The student year has to be at 2020: 20" + studentYear);    
                         check = false;
+                        break;
                     }
 
                     // Check if the 3rd and 4th characters of student number are letters.
                     String studentNumberThirdfourth = studentNumber.substring(2, 4);
                     if (!studentNumberThirdfourth.matches("[a-zA-Z]+")) { 
-                        System.out.println(" The 3rd and 4th characters of student number has to be letter: " + studentNumberThirdfourth);
-                        check = false; 
+                        System.out.println("Student number " + numberOfStudents + ": The 3rd and 4th characters of student number has to be letter: " + studentNumberThirdfourth);
+                        check = false;
+                        break; 
                     }
 
                     // Check if the 5th character of student number is number or letter.
                     String studentNumberFifth = studentNumber.substring(4, 5);
                     if (!studentNumberFifth.matches("[a-zA-Z0-9]+")) { 
-                        System.out.println(" The 5th character of student number has to be letter or number: " + studentNumberFifth);    
+                        System.out.println("Student number " + numberOfStudents + ": The 5th character of student number has to be letter or number: " + studentNumberFifth);    
                         check = false;
+                        break;
                     }
 
                     // Check if the last characters of student number are numbers.
                     String studentNumberLast = studentNumber.substring(5);
                     if (!studentNumberLast.matches("[0-9]+")) { 
-                        System.out.println("The last characters of student number has to be numbers: " + studentNumberLast); 
-                        check = false;  
+                        System.out.println("Student number " + numberOfStudents + ": The last characters of student number has to be numbers: " + studentNumberLast); 
+                        check = false;
+                        break;  
                     }
 
                     // Check if the number after the letter(s) is reasonable.
                     int lastNumbers = Integer.parseInt(studentNumberLast);
                     if (lastNumbers < 1 || lastNumbers > 200) { 
-                        System.out.println("The last numbers has to be 1 and 200: " + lastNumbers);    
+                        System.out.println("Student number " + numberOfStudents + ": The last characters of student number has to be 1 and 200: " + lastNumbers);    
                         check = false;
+                        break;
                     }
                     /*--------------------------- */
                     /* ----- FILE WRITING ------- */
@@ -190,14 +202,8 @@ public class CA1 {
                         output.newLine();
                         output.write("* "+ workload);
                         output.newLine();
-                        
                         output.flush();
-                        System.out.println("Student number " + numberOfStudents + " Saved");
-
-                    // If something wrong it will shows witch student has an error
-                    }else{   
-                        System.out.println("Something wrong with the informations provided on student number " + numberOfStudents);
-                        break;
+                        System.out.println("Student number " + numberOfStudents + ": Saved");
                     }
                 }
                 
