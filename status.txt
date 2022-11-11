@@ -1,0 +1,23 @@
+------------------------------
+****  CA1 Student Status  ****
+**  Author: Lucas Fortunato **
+** Student Number: SBA21177 **
+------------------------------
+* Student: 1
+* 21BSC002 - Derulo
+* Very Light
+------------------------------
+* Student: 2
+* 23BSC060 - Fortunato
+* Light
+------------------------------
+* Student: 3
+* 20BSC120 - Cardoso
+* Part Time
+------------------------------
+* Student: 4
+* 23BSC200 - Smith
+* Full Time
+------------------------------
+**** End of the document ****
+------------------------------

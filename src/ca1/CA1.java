@@ -27,7 +27,7 @@ public class CA1 {
         // Variable for the file path.
         File file = new File("student.txt"); 
 
-        // Create the file that the infos will be written.
+        // Create the file status.txt and write the title.
         BufferedWriter output = new BufferedWriter(new FileWriter("status.txt"));
         output.write("------------------------------");
         output.newLine();
